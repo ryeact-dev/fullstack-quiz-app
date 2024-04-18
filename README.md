@@ -9,8 +9,6 @@ Currently, two official plugins are available:
 
 ## Demo
 
-https://tallymatic-client.vercel.app/login
-
 ## 🚀 Technology
 
 - Vite + React
