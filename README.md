@@ -9,12 +9,15 @@ Currently, two official plugins are available:
 
 ## Demo
 
+https://fullstack-quiz-app-hrcj.vercel.app/
+
 ## 🚀 Technology
 
 - Vite + React
 - TanStack Query
 - Postgresql
 - Prisma DB
+- Supabase
 - Tailwind
 - Shadcn
 
