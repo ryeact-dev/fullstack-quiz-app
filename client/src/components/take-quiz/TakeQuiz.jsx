@@ -57,7 +57,7 @@ export default function TakeQuiz() {
       setQuizInfo({ ...quizInfo, isAnswerSubmitted: true });
       if (
         selectedAnswer ===
-        Number(listOfQuestions?.questions[questionNumber]?.answer + 1)
+        Number(listOfQuestions?.questions[questionNumber]?.answer) + 1
       ) {
         setQuizInfo({ ...quizInfo, score: score + 1, isAnswerSubmitted: true });
       }
