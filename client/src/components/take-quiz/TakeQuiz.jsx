@@ -1,6 +1,6 @@
 import { DUMMY_DATA } from '@/data/dummyData';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Card,
   CardContent,
@@ -53,8 +53,6 @@ export default function TakeQuiz() {
   };
 
   const handleSubmitAnswer = () => {
-    if (Number(questionCounter) >= Number(itemCount)) setEndQuiz(true);
-
     if (selectedAnswer && !isAnswerSubmitted) {
       setQuizInfo({ ...quizInfo, isAnswerSubmitted: true });
       if (
@@ -77,6 +75,10 @@ export default function TakeQuiz() {
       questionCounter: questionCounter + 1,
     });
   };
+
+  useEffect(() => {
+    if (Number(questionCounter) >= Number(itemCount)) setEndQuiz(true);
+  }, [questionCounter, itemCount]);
 
   return (
     <>
