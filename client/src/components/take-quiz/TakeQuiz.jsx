@@ -18,7 +18,7 @@ import { Badge } from '../ui/badge';
 
 export default function TakeQuiz() {
   const navigate = useNavigate();
-  const { subject, itemCount } = useLocation().state;
+  const { subject } = useLocation().state;
   const [endQuiz, setEndQuiz] = useState(false);
 
   const { data: listOfQuestions } = useGetAllQuestions(subject, 0, 100);
@@ -77,8 +77,9 @@ export default function TakeQuiz() {
   };
 
   useEffect(() => {
-    if (Number(questionCounter) > Number(itemCount)) setEndQuiz(true);
-  }, [questionCounter, itemCount]);
+    if (Number(questionCounter) > listOfQuestions?.questions?.length)
+      setEndQuiz(true);
+  }, [questionCounter]);
 
   return (
     <>

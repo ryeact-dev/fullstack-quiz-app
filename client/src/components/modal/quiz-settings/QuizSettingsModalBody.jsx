@@ -19,43 +19,27 @@ import { useNavigate } from 'react-router-dom';
 export default function QuizSettingsModalBody({ closeModal }) {
   const navigate = useNavigate();
   const [subject, setSubject] = useState(null);
-  const [itemCount, setItemCount] = useState(0);
 
   const { data: listOfSubjects } = useGetAllSubjects(0, 100);
 
-  const { data: listOfQuestions } = useGetAllQuestions(subject, 0, 100);
+  const { isLoading, data: listOfQuestions } = useGetAllQuestions(
+    subject,
+    0,
+    100
+  );
 
   const handleSelectChange = (value) => {
     setSubject(value);
   };
-
-  const handleItemChange = (evt) => {
-    const value = evt.target.value;
-    setItemCount(value);
-  };
-
-  console.log(listOfQuestions?.questions);
 
   const handleSubmitClick = () => {
     if (subject === null) {
       return ToastNotification('error', 'Please select a subject');
     }
 
-    if (itemCount === 0) {
-      return ToastNotification('error', 'Item count cannot be zero');
-    }
-
-    if (itemCount > listOfQuestions?.questions?.length) {
-      return ToastNotification(
-        'error',
-        'Item count be more than the questions count'
-      );
-    }
-
     navigate('/quiz', {
       state: {
         subject,
-        itemCount,
       },
     });
   };
@@ -80,22 +64,15 @@ export default function QuizSettingsModalBody({ closeModal }) {
           </SelectContent>
         </Select>
       </div>
-      <Badge className='my-2'>
+      <Badge className='my-2 py-2 px-4'>
         Questions:{' '}
-        {listOfQuestions?.questions?.length > 0
+        {isLoading
+          ? 'Loading...'
+          : listOfQuestions?.questions?.length > 0
           ? listOfQuestions?.questions?.length
           : 0}
       </Badge>
-      <div>
-        <Label htmlFor='items'>Items</Label>
-        <Input
-          onChange={handleItemChange}
-          type='number'
-          id='items'
-          placeholder='How many items...'
-          className='mt-2'
-        />
-      </div>
+
       <div className='flex items-center justify-end gap-3 mt-8'>
         <Button
           type='button'
