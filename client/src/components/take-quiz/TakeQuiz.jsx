@@ -77,7 +77,7 @@ export default function TakeQuiz() {
   };
 
   useEffect(() => {
-    if (Number(questionCounter) >= Number(itemCount)) setEndQuiz(true);
+    if (Number(questionCounter) > Number(itemCount)) setEndQuiz(true);
   }, [questionCounter, itemCount]);
 
   return (
