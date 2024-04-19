@@ -34,6 +34,8 @@ export default function QuizSettingsModalBody({ closeModal }) {
     setItemCount(value);
   };
 
+  console.log(listOfQuestions?.questions);
+
   const handleSubmitClick = () => {
     if (subject === null) {
       return ToastNotification('error', 'Please select a subject');
@@ -81,8 +83,8 @@ export default function QuizSettingsModalBody({ closeModal }) {
       <Badge className='my-2'>
         Questions:{' '}
         {listOfQuestions?.questions?.length > 0
-          ? listOfQuestions?.questions?.length - 1
-          : listOfQuestions?.questions?.length}
+          ? listOfQuestions?.questions?.length
+          : 0}
       </Badge>
       <div>
         <Label htmlFor='items'>Items</Label>
