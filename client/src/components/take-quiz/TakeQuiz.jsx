@@ -53,6 +53,8 @@ export default function TakeQuiz() {
   };
 
   const handleSubmitAnswer = () => {
+    if (Number(questionCounter) > Number(itemCount)) setEndQuiz(true);
+
     if (selectedAnswer && !isAnswerSubmitted) {
       setQuizInfo({ ...quizInfo, isAnswerSubmitted: true });
       if (
@@ -91,7 +93,7 @@ export default function TakeQuiz() {
         </Button>
       </div>
       <Card className='max-w-xl w-full'>
-        {questionCounter <= Number(itemCount) && !endQuiz ? (
+        {!endQuiz ? (
           <>
             <CardHeader>
               <CardTitle className='text-blue-500'>
