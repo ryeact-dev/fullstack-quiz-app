@@ -45,7 +45,7 @@ export default function QuizSettingsModalBody({ closeModal }) {
       return ToastNotification('error', 'Item count cannot be zero');
     }
 
-    if (itemCount > listOfQuestions?.questions?.length - 1) {
+    if (itemCount > listOfQuestions?.questions?.length) {
       return ToastNotification(
         'error',
         'Item count be more than the questions count'
