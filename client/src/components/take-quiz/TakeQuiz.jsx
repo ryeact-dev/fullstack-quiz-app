@@ -24,7 +24,7 @@ export default function TakeQuiz() {
   const { data: listOfQuestions } = useGetAllQuestions(subject, 0, 100);
 
   const [quizInfo, setQuizInfo] = useState({
-    questionNumber: 1,
+    questionNumber: 0,
     questionCounter: 1,
     score: 0,
     selectedAnswer: null,
