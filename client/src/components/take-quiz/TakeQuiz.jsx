@@ -53,7 +53,7 @@ export default function TakeQuiz() {
   };
 
   const handleSubmitAnswer = () => {
-    if (Number(questionCounter) > Number(itemCount)) setEndQuiz(true);
+    if (Number(questionCounter) >= Number(itemCount)) setEndQuiz(true);
 
     if (selectedAnswer && !isAnswerSubmitted) {
       setQuizInfo({ ...quizInfo, isAnswerSubmitted: true });
