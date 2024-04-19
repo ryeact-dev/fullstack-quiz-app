@@ -131,7 +131,7 @@ export default function TakeQuiz() {
               <div className='flex flex-col items-center'>
                 <Badge className='text-base font-bold px-6'>You Scores:</Badge>
                 <p className='text-2xl font-medium '>
-                  {`${score} out of ${listOfQuestions?.questions?.length - 1}`}
+                  {`${score} out of ${listOfQuestions?.questions?.length}`}
                 </p>
               </div>
               <Button
