@@ -114,9 +114,7 @@ export default function TakeQuiz() {
                       isAnswerSubmitted &&
                       Number(
                         listOfQuestions?.questions[questionNumber]?.answer
-                      ) -
-                        1 ===
-                        index
+                      ) === index
                         ? 'bg-green-300'
                         : isAnswerSubmitted && selectedAnswer === index + 1
                         ? 'bg-red-400'
@@ -157,7 +155,7 @@ export default function TakeQuiz() {
             <CardTitle className='text-blue-500 text-3xl font-bold'>
               Your Scores:
               <CardDescription className='text-3xl text-slate-700 font-semibold'>
-                {score}/{listOfQuestions?.questions?.length - 1}
+                {score}/{listOfQuestions?.questions?.length}
               </CardDescription>
             </CardTitle>
             <Button
