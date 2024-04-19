@@ -158,7 +158,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
                 <TableCell className='font-medium'>
                   <p>{question.subject.title}</p>
                   <Badge className='italic shadow-none'>
-                    Answer: {question.answer}
+                    Answer: {Number(question.answer) + 1}
                   </Badge>
                 </TableCell>
                 <TableCell className='font-medium space-x-3'>
