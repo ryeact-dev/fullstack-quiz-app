@@ -145,7 +145,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
           <TableBody>
             {listOfQuestions?.questions?.map((question, index) => (
               <TableRow key={index}>
-                <TableCell className='font-medium w-48'>
+                <TableCell className='font-medium w-[40%]'>
                   {question.question}
                 </TableCell>
                 <TableCell className='font-medium w-[35%]'>
@@ -161,7 +161,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
                     Answer: {Number(question.answer) + 1}
                   </Badge>
                 </TableCell>
-                <TableCell className='font-medium space-x-3'>
+                <TableCell className='font-medium  space-y-3 flex flex-col items-start'>
                   <Button
                     size='sm'
                     onClick={() => handleOpenModal(question, false)}

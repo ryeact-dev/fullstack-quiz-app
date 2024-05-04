@@ -102,18 +102,18 @@ export default function TakeQuiz() {
               <CardTitle className='text-blue-500'>
                 Question #{questionCounter}
               </CardTitle>
-              <CardDescription className='text-xl text-slate-700 font-semibold'>
+              <CardDescription className='text-lg text-slate-700 font-semibold'>
                 {listOfQuestions?.questions[questionNumber]?.question}
               </CardDescription>
             </CardHeader>
-            <CardContent className='flex flex-col gap-8'>
+            <CardContent className='flex flex-col gap-4'>
               {listOfQuestions?.questions[questionNumber]?.options.map(
                 (option, index) => (
                   <Button
                     key={index}
                     variant='outline'
-                    size='lg'
-                    className={`w-full text-xl py-8 border-slate-500 hover:bg-blue-300 justify-start text-wrap text-left ${
+                    size=''
+                    className={`w-full text-lg py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-4 ${
                       selectedAnswer === index + 1 ? 'bg-blue-300' : ''
                     } ${
                       isAnswerSubmitted &&
