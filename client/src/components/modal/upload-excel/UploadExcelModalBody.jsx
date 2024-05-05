@@ -14,6 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useExcelQuestions } from '@/hooks/question.hook';
+import { Save } from 'lucide-react';
 
 export default function UploadExcelModalBody({ payload, closeModal }) {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -21,10 +23,15 @@ export default function UploadExcelModalBody({ payload, closeModal }) {
 
   const { data: listOfSubjects } = useGetAllSubjects(0, 100);
 
-  // const uploadStudentsMutation = useAddBulkStudents(closeModal);
+  const onAddExcelQuestionsMutation = useExcelQuestions(closeModal);
 
   const onSubmitHandler = (evt) => {
     evt.preventDefault();
+
+    if (!subjectId) {
+      ToastNotification('error', 'Please select a subject');
+      return;
+    }
 
     if (!uploadedFile) {
       ToastNotification('error', 'No Excel file submitted');
@@ -60,12 +67,12 @@ export default function UploadExcelModalBody({ payload, closeModal }) {
         return {
           question: item.question,
           options: [item.option1, item.option2, item.option3, item.option4],
-          answer: item.answer,
+          answer: item.answer.toString(),
           subjectId,
         };
       });
 
-      // uploadStudentsMutation.mutate(forUpdatingData);
+      onAddExcelQuestionsMutation.mutate(excelData);
     });
   };
 
@@ -96,8 +103,13 @@ export default function UploadExcelModalBody({ payload, closeModal }) {
         uploadedFile={uploadedFile}
         setUploadedFile={setUploadedFile}
       />
-      <Button type='submit' className='mt-4'>
-        Upload
+      <Button
+        type='submit'
+        className='mt-4 float-right w-36'
+        disabled={onAddExcelQuestionsMutation.isPending}
+      >
+        <Save size={18} className='mr-1' />{' '}
+        {onAddExcelQuestionsMutation.isPending ? 'Uploading...' : 'Upload'}
       </Button>
     </form>
   );

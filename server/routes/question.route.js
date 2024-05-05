@@ -4,6 +4,7 @@ const {
   getAllQuestions,
   updateQuestion,
   deleteQuestion,
+  excelQuestions,
 } = require('../controllers/question.controller');
 
 const router = express.Router();
@@ -11,6 +12,7 @@ const router = express.Router();
 router.get('/get-question', getAllQuestions);
 
 router.post('/add-question', addQuestion);
+router.post('/excel-questions', excelQuestions);
 
 router.patch('/update-question', updateQuestion);
 

@@ -62,6 +62,20 @@ async function addQuestion(req, res, next) {
   }
 }
 
+async function excelQuestions(req, res, next) {
+  console.log(req.body);
+
+  try {
+    await prisma.question.createMany({
+      data: req.body,
+    });
+    res.status(200).send('Questions from excel added successfully');
+  } catch (err) {
+    err.title = 'Adding excel questions';
+    next(err);
+  }
+}
+
 async function updateQuestion(req, res, next) {
   try {
     await prisma.question.update({
@@ -95,5 +109,6 @@ async function deleteQuestion(req, res, next) {
 
 exports.getAllQuestions = getAllQuestions;
 exports.addQuestion = addQuestion;
+exports.excelQuestions = excelQuestions;
 exports.updateQuestion = updateQuestion;
 exports.deleteQuestion = deleteQuestion;
