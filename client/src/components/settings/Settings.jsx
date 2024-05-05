@@ -1,4 +1,4 @@
-import { Home, PlusCircle } from 'lucide-react';
+import { File, Home, PlusCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 import { useState } from 'react';
@@ -45,6 +45,19 @@ export default function Settings() {
     setIsopen(true);
   };
 
+  const handleOpenExcel = () => {
+    const modalData = {
+      ...modalSetting,
+      title: 'Upload Excel',
+      size: 'max-w-xl',
+      modalType: 'upload-excel',
+      payload: null,
+    };
+
+    setModalSetting(modalData);
+    setIsopen(true);
+  };
+
   const handleTabValueClick = (tabValue) => {
     setTabValue(tabValue);
   };
@@ -83,11 +96,17 @@ export default function Settings() {
               Add Subject
             </TabsTrigger>
           </TabsList>
-
-          <Button onClick={handleOpenModal} className='w-36'>
-            <PlusCircle size={18} className='mr-1' />{' '}
-            {tabValue === 'subject' ? 'Add Subject' : 'Add Question'}
-          </Button>
+          <div className='flex gap-3 items-center'>
+            {tabValue === 'question' && (
+              <Button onClick={handleOpenExcel} variant='secondary'>
+                <File size={18} className='mr-1' /> Upload Excel
+              </Button>
+            )}
+            <Button onClick={handleOpenModal} className='w-36'>
+              <PlusCircle size={18} className='mr-1' />{' '}
+              {tabValue === 'subject' ? 'Add Subject' : 'Add Question'}
+            </Button>
+          </div>
         </div>
 
         {tabValue === 'question' ? (

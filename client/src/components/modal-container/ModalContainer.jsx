@@ -5,6 +5,7 @@ import { Card } from '../ui/card';
 import AddSubjectModalBody from '../modal/add-subject/AddSubjectModalBody';
 import ConfirmationModalBody from '../modal/confirmation/ConfirmationModalBody';
 import QuizSettingsModalBody from '../modal/quiz-settings/QuizSettingsModalBody';
+import UploadExcelModalBody from '../modal/upload-excel/UploadExcelModalBody';
 
 export default function ModalContainer({ isOpen, setIsOpen, modalSetting }) {
   const { modalType, title, size, payload, confirmationType } = modalSetting;
@@ -40,6 +41,11 @@ export default function ModalContainer({ isOpen, setIsOpen, modalSetting }) {
     case 'take-quiz':
       modalComponent = (
         <QuizSettingsModalBody payload={payload} closeModal={close} />
+      );
+      break;
+    case 'upload-excel':
+      modalComponent = (
+        <UploadExcelModalBody payload={payload} closeModal={close} />
       );
       break;
     case 'confirmation':

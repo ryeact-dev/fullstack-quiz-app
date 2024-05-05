@@ -18,6 +18,10 @@ export async function addQuestion({ forAddingData, isNew }) {
   }
 }
 
+export async function excelQuestions(excelData) {
+  return await axios.post(`/api/question/excel-questions`, excelData);
+}
+
 export async function deleteQuestion({ questionId }) {
   return await axios.delete(`/api/question/delete-question/${questionId}`);
 }

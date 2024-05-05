@@ -3,6 +3,13 @@ import { Button } from '../ui/button';
 import { useState } from 'react';
 import ModalContainer from '../modal-container/ModalContainer';
 import NeubrutalismButton from '../neubrutalism-button/NeubrutalismButton';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../ui/card';
 
 export default function MainMenu() {
   const navigate = useNavigate();
@@ -30,18 +37,23 @@ export default function MainMenu() {
   };
 
   return (
-    <div className='flex flex-col space-y-4'>
-      <NeubrutalismButton
-        onClick={() => navigate('/settings', { replace: true })}
-        btnName='🦾 Settings'
-      />
+    <Card>
+      <CardHeader>
+        <CardTitle>Quiz App</CardTitle>
+        {/* <CardDescription> Let's get started</CardDescription> */}
+      </CardHeader>
+      <CardContent className='flex flex-col space-y-4 mt-4'>
+        <NeubrutalismButton
+          onClick={() => navigate('/settings', { replace: true })}
+          btnName='🦾 Settings'
+        />
 
-      <NeubrutalismButton
-        onClick={handleOpenModal}
-        btnName=' 🏆 Take the Quiz'
-      />
+        <NeubrutalismButton
+          onClick={handleOpenModal}
+          btnName=' 🏆 Take the Quiz'
+        />
 
-      {/* <Button
+        {/* <Button
         className='text-lg'
         size='lg'
         variant='secondary'
@@ -50,7 +62,7 @@ export default function MainMenu() {
         🦾 Settings
       </Button> */}
 
-      {/* <Button
+        {/* <Button
         className='text-lg'
         size='lg'
         variant='secondary'
@@ -58,7 +70,7 @@ export default function MainMenu() {
       >
         🏆 Take the Quiz
       </Button> */}
-
+      </CardContent>
       {isOpen === true && (
         <ModalContainer
           isOpen={isOpen}
@@ -66,6 +78,6 @@ export default function MainMenu() {
           modalSetting={modalSetting}
         />
       )}
-    </div>
+    </Card>
   );
 }

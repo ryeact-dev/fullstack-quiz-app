@@ -8,6 +8,7 @@ import {
 import {
   addQuestion,
   deleteQuestion,
+  excelQuestions,
   getPaginatedQuestions,
 } from '@/api/question.api';
 
@@ -31,6 +32,20 @@ export const useAddQuestion = (closeModal) => {
 
   return useMutation({
     mutationFn: addQuestion,
+    onError: ({ response }) => ToastNotification('error', response.data),
+    onSuccess: ({ data }) => {
+      queryClient.invalidateQueries({ queryKey: ['list-of-questions'] });
+      ToastNotification('success', data);
+      closeModal();
+    },
+  });
+};
+
+export const useExcelQuestions = (closeModal) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: excelQuestions,
     onError: ({ response }) => ToastNotification('error', response.data),
     onSuccess: ({ data }) => {
       queryClient.invalidateQueries({ queryKey: ['list-of-questions'] });

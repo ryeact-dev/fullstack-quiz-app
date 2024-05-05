@@ -114,7 +114,9 @@ export default function TakeQuiz() {
                     variant='outline'
                     size=''
                     className={`w-full text-lg py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-4 ${
-                      selectedAnswer === index + 1 ? 'bg-blue-300' : ''
+                      selectedAnswer === index + 1
+                        ? 'bg-blue-300 font-semibold'
+                        : ''
                     } ${
                       isAnswerSubmitted &&
                       Number(
@@ -165,7 +167,7 @@ export default function TakeQuiz() {
             </CardTitle>
             <Button
               size='lg'
-              className='w-auto text-xl py-8 bg-blue-500 hover:bg-blue-700'
+              className='w-auto text-xl py-8 bg-blue-500 hover:bg-blue-700 text-white font-semibold'
               onClick={() => window.location.reload()}
             >
               Reset Quiz
