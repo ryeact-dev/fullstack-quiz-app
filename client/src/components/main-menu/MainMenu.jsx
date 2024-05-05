@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from '../ui/card';
 
+import svgLogo from '@/assets/q&a.svg';
+
 export default function MainMenu() {
   const navigate = useNavigate();
 
@@ -39,7 +41,10 @@ export default function MainMenu() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Quiz App</CardTitle>
+        <CardTitle className='flex items-center'>
+          <img src={svgLogo} alt='main-logo' className='size-20' />
+          <p className='text-4xl font-extrabold'>Quiz App</p>
+        </CardTitle>
         {/* <CardDescription> Let's get started</CardDescription> */}
       </CardHeader>
       <CardContent className='flex flex-col space-y-4 mt-4'>
