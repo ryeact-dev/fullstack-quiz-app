@@ -63,8 +63,6 @@ async function addQuestion(req, res, next) {
 }
 
 async function excelQuestions(req, res, next) {
-  console.log(req.body);
-
   try {
     await prisma.question.createMany({
       data: req.body,
