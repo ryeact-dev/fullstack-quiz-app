@@ -83,7 +83,7 @@ export default function TakeQuiz() {
 
   return (
     <>
-      <div className='w-full max-w-xl flex justify-between'>
+      <div className='w-full max-w-3xl flex justify-between'>
         <Button
           className='mb-6'
           variant='destructive'
@@ -95,7 +95,7 @@ export default function TakeQuiz() {
           <XCircle size={18} className='mr-1' /> End Quiz
         </Button>
       </div>
-      <Card className='max-w-xl w-full'>
+      <Card className='max-w-3xl w-full'>
         {!endQuiz ? (
           <>
             <CardHeader>
@@ -113,7 +113,7 @@ export default function TakeQuiz() {
                     key={index}
                     variant='outline'
                     size=''
-                    className={`w-full text-lg py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-4 ${
+                    className={`w-full text-base py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-5 h-max max-h-[100px] ${
                       selectedAnswer === index + 1
                         ? 'bg-blue-300 font-semibold'
                         : ''

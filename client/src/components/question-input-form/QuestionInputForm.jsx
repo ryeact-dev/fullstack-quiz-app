@@ -18,7 +18,13 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useGetAllSubjects } from '@/hooks/subject.hook';
 
-const optionsCount = [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }];
+const optionsCount = [
+  { id: '0' },
+  { id: '1' },
+  { id: '2' },
+  { id: '3' },
+  { id: '4' },
+];
 
 export default function QuestionInputForm({ form, setOptions, options }) {
   const { data: listOfSubjects } = useGetAllSubjects(0, 100);
@@ -54,13 +60,20 @@ export default function QuestionInputForm({ form, setOptions, options }) {
         {optionsCount.map((item, index) => (
           <div key={index}>
             <Label className=''>{`Option: ${Number(item.id) + 1}`}</Label>
-            <Input
+            <Textarea
+              defaultValue={options[index] || ''}
+              type='text'
+              className='max-h-[70px] resize-none'
+              placeholder='Enter option here...'
+              onChange={(e) => handleOptionChange(item.id, e.target.value)}
+            />
+            {/* <Input
               defaultValue={options[index] || ''}
               className='mt-0'
               type='text'
               placeholder='Enter option here...'
               onChange={(e) => handleOptionChange(item.id, e.target.value)}
-            />
+            /> */}
           </div>
         ))}
 

@@ -39,7 +39,7 @@ export default function MainMenu() {
   };
 
   return (
-    <Card>
+    <Card className='w-full max-w-lg'>
       <CardHeader>
         <CardTitle className='flex items-center'>
           <img src={svgLogo} alt='main-logo' className='size-20' />
