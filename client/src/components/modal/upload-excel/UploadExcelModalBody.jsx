@@ -66,7 +66,13 @@ export default function UploadExcelModalBody({ payload, closeModal }) {
       const excelData = d.map((item) => {
         return {
           question: item.question,
-          options: [item.option1, item.option2, item.option3, item.option4],
+          options: [
+            item.option1,
+            item.option2,
+            item.option3,
+            item.option4,
+            item.option5,
+          ],
           answer: item.answer.toString(),
           subjectId,
         };
