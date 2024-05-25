@@ -24,7 +24,7 @@ export default function TakeQuiz() {
   const { data: listOfQuestions } = useGetAllQuestions(subject, 0, 100);
 
   const [quizInfo, setQuizInfo] = useState({
-    questionNumber: 0,
+    questionNumber: 1,
     questionCounter: 1,
     score: 0,
     selectedAnswer: null,
@@ -57,7 +57,7 @@ export default function TakeQuiz() {
       setQuizInfo({ ...quizInfo, isAnswerSubmitted: true });
       if (
         selectedAnswer ===
-        Number(listOfQuestions?.questions[questionNumber]?.answer) + 1
+        Number(listOfQuestions?.questions[questionNumber]?.answer)
       ) {
         setQuizInfo({ ...quizInfo, score: score + 1, isAnswerSubmitted: true });
       }
@@ -65,11 +65,15 @@ export default function TakeQuiz() {
     }
 
     // Create random number for random question
-    // const randomIndex = randomNumber(questionNumber, DUMMY_DATA.length);
+    const randomIndex = randomNumber(
+      questionNumber,
+      listOfQuestions?.questions.length - 2
+    );
 
     setQuizInfo({
       ...quizInfo,
-      questionNumber: questionNumber + 1,
+      questionNumber: randomIndex,
+      // questionNumber: questionNumber+1,
       selectedAnswer: null,
       isAnswerSubmitted: false,
       questionCounter: questionCounter + 1,
@@ -109,28 +113,30 @@ export default function TakeQuiz() {
             <CardContent className='flex flex-col gap-4'>
               {listOfQuestions?.questions[questionNumber]?.options.map(
                 (option, index) => (
-                  <Button
-                    key={index}
-                    variant='outline'
-                    size=''
-                    className={`w-full text-base py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-5 h-max max-h-[100px] ${
-                      selectedAnswer === index + 1
-                        ? 'bg-blue-300 font-semibold'
-                        : ''
-                    } ${
-                      isAnswerSubmitted &&
-                      Number(
-                        listOfQuestions?.questions[questionNumber]?.answer
-                      ) === index
-                        ? 'bg-green-300'
-                        : isAnswerSubmitted && selectedAnswer === index + 1
-                        ? 'bg-red-400'
-                        : ''
-                    }  `}
-                    onClick={() => handleSelectAnswer(index + 1)}
-                  >
-                    {option}
-                  </Button>
+                  <div key={index}>
+                    <Button
+                      variant='outline'
+                      size=''
+                      className={`w-full text-base py-7 border-slate-500 hover:bg-blue-300 hover:text-foreground justify-start text-wrap text-left leading-5 h-max max-h-dvh ${
+                        selectedAnswer === index + 1
+                          ? 'bg-blue-300 font-semibold'
+                          : ''
+                      } ${
+                        isAnswerSubmitted &&
+                        Number(
+                          listOfQuestions?.questions[questionNumber]?.answer
+                        ) ===
+                          index + 1
+                          ? 'bg-green-300'
+                          : isAnswerSubmitted && selectedAnswer === index + 1
+                          ? 'bg-red-400'
+                          : ''
+                      }  `}
+                      onClick={() => handleSelectAnswer(index + 1)}
+                    >
+                      {option}
+                    </Button>
+                  </div>
                 )
               )}
             </CardContent>
