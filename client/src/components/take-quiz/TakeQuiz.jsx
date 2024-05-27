@@ -72,8 +72,8 @@ export default function TakeQuiz() {
 
     setQuizInfo({
       ...quizInfo,
-      questionNumber: randomIndex,
-      // questionNumber: questionNumber+1,
+      // questionNumber: randomIndex,
+      questionNumber: questionNumber + 1,
       selectedAnswer: null,
       isAnswerSubmitted: false,
       questionCounter: questionCounter + 1,
