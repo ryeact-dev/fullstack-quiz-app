@@ -133,7 +133,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
         </div>
       </CardHeader>
       <CardContent className='max-h-[600px] overflow-auto mx-4 mb-8'>
-        {isLoading ? (
+        {isLoading || isPlaceholderData ? (
           <p className='text-center my-2 italic'>Loading Questions...</p>
         ) : (
           <Table>
