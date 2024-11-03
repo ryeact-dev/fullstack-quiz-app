@@ -84,7 +84,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
   };
 
   const totalFetchQuestions =
-    Number(page - 1) * 10 + listOfQuestions?.questions?.length;
+    Number(page - 1) * 50 + listOfQuestions?.questions?.length;
 
   return (
     <Card
