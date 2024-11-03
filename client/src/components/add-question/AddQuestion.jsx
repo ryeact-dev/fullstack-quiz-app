@@ -41,7 +41,7 @@ export default function AddQuestion({ modalSetting, setModalSetting }) {
   const { data: listOfQuestions, isPlaceholderData } = useGetAllQuestions(
     subject,
     Number(page - 1),
-    10
+    50
   );
 
   const onPageClick = (pageNumber) => {
