@@ -20,7 +20,7 @@ async function getAllQuestions(req, res, next) {
         subject: true,
       },
       orderBy: {
-        createdAt: 'desc',
+        id: 'asc',
       },
     });
 

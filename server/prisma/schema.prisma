@@ -41,7 +41,7 @@ model Subject {
 }
 
 model Question {
-  id        String   @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   question  String
   options   String[]
   answer    String
